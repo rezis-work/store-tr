@@ -118,9 +118,11 @@ export default function Banner({ banners }: any) {
             <Image
               src={urlFor(item.image).url()}
               alt="banner image"
-              width={200}
-              height={200}
+              className=" w-full max-h-[650px] object-cover"
+              width={2000}
+              height={2000}
             />
+            <div className=" w-full h-40 bg-gradient-to-t from-gray-100 to-transparent absolute bottom-0 z-20" />
           </Link>
         ))}
       </Slider>

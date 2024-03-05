@@ -2,6 +2,8 @@ import { groq } from "next-sanity";
 import Banner from "../components/Banner";
 import { client } from "../lib/sanityClient";
 
+export const revalidate = 10;
+
 const bannerQuery = groq`*[_type == "banner"]{
   image,
   _id
