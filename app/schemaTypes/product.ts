@@ -64,7 +64,17 @@ export default defineType({
     }),
     defineField({
       name: "isnew",
-      title: "New Arrival",
+      title: "New Arrivals",
+      type: "boolean",
+    }),
+    defineField({
+      name: "bestseller",
+      title: "Best Seller",
+      type: "boolean",
+    }),
+    defineField({
+      name: "specialoffers",
+      title: "Special Offer",
       type: "boolean",
     }),
     defineField({
