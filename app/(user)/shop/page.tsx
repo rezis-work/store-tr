@@ -1,12 +1,36 @@
 "use client";
 import Container from "@/app/components/Container";
-import React, { useState } from "react";
+import ListProduct from "@/app/components/ListProduct";
+import Product from "@/app/components/Product";
+import { products } from "@/app/lib/sanityClient";
+import { ProductProps } from "@/type";
+import React, { useEffect, useState } from "react";
 import { BsGridFill } from "react-icons/bs";
 import { ImList } from "react-icons/im";
 
 export default function ShopPage() {
   const [showGrid, setShowGrid] = useState(true);
   const [showList, setShowList] = useState(false);
+  const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const data = await products();
+        setProductData(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // console.log(productData);
+  if (isLoading) return <p>Loading...</p>;
   return (
     <Container>
       <div className=" flex items-center justify-between pb-10">
@@ -41,6 +65,19 @@ export default function ShopPage() {
           </span>
         </div>
       </div>
+      {showGrid ? (
+        <div className=" w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {productData?.map((item: ProductProps) => (
+            <Product key={item?._id} product={item} />
+          ))}
+        </div>
+      ) : (
+        <div className=" w-full grid grid-cols-1 gap-5">
+          {productData?.map((item: ProductProps) => (
+            <ListProduct key={item?._id} product={item} />
+          ))}
+        </div>
+      )}
     </Container>
   );
 }

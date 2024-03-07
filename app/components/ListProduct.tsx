@@ -10,13 +10,12 @@ interface Props {
   bg?: string;
 }
 
-export default function Product({ product, bg }: Props) {
-  // console.log(product.slug.current);
+export default function ListProduct({ product, bg }: Props) {
   return (
     <>
-      <div className=" w-full relative group border-[1px] border-black hover:shadow-lg duration-200 shadow-gray-500 overflow-hidden group rounded-md">
-        <div className=" w-full h-80 flex justify-center items-center bg-white overflow-hidden">
-          <div className={`relative overflow-hidden  ${bg}`}>
+      <div className=" w-full md:w-[50%]  relative group border-[1px] flex flex-col md:flex-row items-center  border-black hover:shadow-lg duration-200 shadow-gray-500 overflow-hidden group rounded-md">
+        <div className=" w-full h-80 flex justify-center md:w-[300px] md:justify-start items-center bg-white overflow-hidden">
+          <div className={`relative overflow-hidden   ${bg}`}>
             <Link href={`/product/${product?.slug?.current}`}>
               <Image
                 src={urlFor(product?.image).url()}
@@ -55,7 +54,7 @@ export default function Product({ product, bg }: Props) {
             </div>
           )}
         </div>
-        <div className=" max-w-80 mx-auto py-6 flex flex-col gap-1 px-4">
+        <div className=" max-w-80 mx-auto  py-6 flex flex-col gap-1 px-4">
           <div className=" flex items-center justify-between">
             <h2 className=" text-lg text-primeColor font-bold">
               {product?.title.substring(0, 15)}
