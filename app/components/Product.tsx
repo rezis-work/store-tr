@@ -11,12 +11,13 @@ interface Props {
 }
 
 export default function Product({ product, bg }: Props) {
+  // console.log(product.slug.current);
   return (
     <>
       <div className=" w-full relative group border-[1px] border-black hover:shadow-lg duration-200 shadow-gray-500 overflow-hidden group rounded-md">
         <div className=" w-full h-80 flex justify-center items-center bg-white overflow-hidden">
           <div className={`relative overflow-hidden  ${bg}`}>
-            <Link href={"/"}>
+            <Link href={`/product/${product?.slug?.current}`}>
               <Image
                 src={urlFor(product?.image).url()}
                 alt="product image"
