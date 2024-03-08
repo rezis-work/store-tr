@@ -1,3 +1,4 @@
+"use client";
 import { ProductProps } from "@/type";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,12 +6,16 @@ import { BsArrowsFullscreen } from "react-icons/bs";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { AiOutlineShopping } from "react-icons/ai";
 import { urlFor } from "../lib/sanityClient";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/trcomerceSlice";
+import toast, { Toaster } from "react-hot-toast";
 interface Props {
   product: ProductProps;
   bg?: string;
 }
 
 export default function Product({ product, bg }: Props) {
+  const dispatch = useDispatch();
   // console.log(product.slug.current);
   return (
     <>
@@ -27,17 +32,22 @@ export default function Product({ product, bg }: Props) {
               />
             </Link>
             <div className="absolute bottom-0 flex  items-center justify-center w-full gap-5 translate-y-[110%] group-hover:-translate-y-2 transition-transform duration-300">
-              <Link
-                href={"/"}
+              <button
+                onClick={() => {
+                  dispatch(addToCart(product));
+                  toast.success(
+                    `${product?.title.substring(0, 12)}... added to cart`
+                  );
+                }}
                 className=" bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200"
               >
                 <span>
                   <AiOutlineShopping />
                 </span>
                 Add to bag
-              </Link>
+              </button>
               <Link
-                href={"/"}
+                href={`/product/${product?.slug?.current}`}
                 className=" bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200"
               >
                 <span>
@@ -80,6 +90,15 @@ export default function Product({ product, bg }: Props) {
             </div>
           </div>
         </div>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: "#000",
+              color: "#fff",
+            },
+          }}
+        />
       </div>
     </>
   );
