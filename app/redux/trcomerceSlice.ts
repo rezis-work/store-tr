@@ -15,7 +15,7 @@ export const trcomerceSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const existingProduct = state?.productData.find((item: ProductProps) => {
-        item?._id === action?.payload?._id;
+        return item?._id === action?.payload?._id;
       });
       if (existingProduct) {
         existingProduct.quantity += action.payload.quantity;
