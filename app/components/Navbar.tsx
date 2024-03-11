@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "@/app/assets/logo1.png";
 import { FaSearch } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { signOut, useSession } from "next-auth/react";
@@ -13,7 +13,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [searchQuery, setSearchQueary] = useState<string>("");
   const { data: session } = useSession();
-  console.log(session);
   const navBarList = [
     {
       title: "Home",
@@ -36,6 +35,7 @@ export default function Navbar() {
       link: "/studio",
     },
   ];
+
   return (
     <div className=" w-full h-20 md:h-40 lg:h-20 bg-white border-b-[1px] border-b-gray-400 sticky top-0 z-50 opacity-80">
       <nav className=" h-full max-w-screen-xl mx-auto px-4 md:flex-col md:pt-3 md:pb-2 lg:pt-0 lg:pb-0 lg:flex-row xl:px-0 flex items-center justify-between gap-2">

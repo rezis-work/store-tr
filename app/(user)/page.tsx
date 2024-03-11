@@ -5,6 +5,7 @@ import NewArrival from "../components/NewArrival";
 import HomeBanner from "../components/HomeBanner";
 import BestSellers from "../components/BestSellers";
 import YearProduct from "../components/YearProduct";
+import POST from "../api/checkout/route";
 
 export const revalidate = 10;
 

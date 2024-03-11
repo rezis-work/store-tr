@@ -14,11 +14,18 @@ export default function Profile() {
             alt="user image"
             width={300}
             height={300}
+            className=" p-4"
           />
-          <p>user email</p>
-          <p>{session?.user?.email}</p>
-          <p>user name</p>
-          <p>{session?.user?.name}</p>
+          <div className=" p-4 pl-1 border-[1px] w-[250px] ml-4">
+            <p className=" text-xl font-semibold pb-1 border-b-2">
+              User E-mail
+            </p>
+            <p className=" mt-2">{session?.user?.email}</p>
+          </div>
+          <div className=" mt-3 p-4 pl-1 border-[1px] w-[250px] ml-4">
+            <p className=" text-xl font-semibold pb-1 border-b-2">user name</p>
+            <p className=" mt-2">{session?.user?.name}</p>
+          </div>
         </div>
       ) : (
         <div className=" w-full flex justify-center py-5">

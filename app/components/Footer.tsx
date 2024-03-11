@@ -11,7 +11,7 @@ export default function Footer() {
           </span>
           Copyright 2024 | TRcomerce | All rights reserved
           <a href="https://github.com/rezis-work" target="_blanck">
-            <span className=" ml-1 font-medium group-hover:text-xl ">
+            <span className=" ml-1 font-medium  ">
               Powered by LineDevLTD |{" "}
               <span className="hover:underline">Creator Rezi Karanadze</span>
             </span>
