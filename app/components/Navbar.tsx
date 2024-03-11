@@ -7,11 +7,13 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [searchQuery, setSearchQueary] = useState<string>("");
-
+  const { data: session } = useSession();
+  console.log(session);
   const navBarList = [
     {
       title: "Home",
@@ -69,6 +71,14 @@ export default function Navbar() {
               {item?.title}
             </Link>
           ))}
+          {session?.user && (
+            <button
+              onClick={() => signOut()}
+              className=" flex hover:font-medium w-20 h-6 justify-center items-center px-12 text-gray-500 hover:underline underline-offset-4 decoration-[1px] hover:text-red-600   duration-200 "
+            >
+              Logout
+            </button>
+          )}
         </div>
         <HiMenuAlt2 className=" inline-flex md:hidden cursor-pointer w-8 h-6" />
       </nav>
