@@ -51,7 +51,7 @@ export default function PageButton() {
         </p>
       </button>
       <Link
-        href={session?.user ? "/cart" : "/profile"}
+        href={"/cart"}
         className="bg-white w-16 h-[70px] rounded-md flex flex-col gap-1 text-primeColor justify-center items-center hadow-testShadow overflow-x-hidden group cursor-pointer relative"
       >
         <div className="flex justify-center items-center">

@@ -16,7 +16,6 @@ interface Props {
 
 export default function Product({ product, bg }: Props) {
   const dispatch = useDispatch();
-  // console.log(product.slug.current);
   return (
     <>
       <div className=" w-full relative group border-[1px] border-black hover:shadow-lg duration-200 shadow-gray-500 overflow-hidden group rounded-md">
